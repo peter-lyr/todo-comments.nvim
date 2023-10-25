@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/folke/todo-comments.nvim/compare/v1.1.0...v1.2.0) (2023-10-25)
+
+
+### Features
+
+* added source for trouble v3 ([9935ae9](https://github.com/folke/todo-comments.nvim/commit/9935ae96190c4c177cf0a0dfaddbe4a8addf3eed))
+
 ## [1.1.0](https://github.com/folke/todo-comments.nvim/compare/v1.0.1...v1.1.0) (2023-03-31)
 
 
