@@ -16,7 +16,15 @@ local function keywords_filter(opts_keywords)
   end, all_keywords)
 end
 
+M.load_todo_exclude_dirs_txt = function()
+end
+
+M.todo_exclude_this_dir = function(file)
+  return nil
+end
+
 function M.process(lines)
+  M.load_todo_exclude_dirs_txt()
   local results = {}
   for _, line in pairs(lines) do
     local file, row, col, text = line:match("^(.+):(%d+):(%d+):(.*)$")
@@ -31,11 +39,15 @@ function M.process(lines)
       local start, finish, kw = Highlight.match(text)
 
       if start then
+        if M.todo_exclude_this_dir(filr) then
+          goto continue
+        end
         kw = Config.keywords[kw] or kw
         item.tag = kw
         item.text = vim.trim(text:sub(start))
         item.message = vim.trim(text:sub(finish + 1))
         table.insert(results, item)
+        ::continue::
       end
     end
   end
