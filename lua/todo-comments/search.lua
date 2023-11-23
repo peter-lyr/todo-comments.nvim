@@ -39,7 +39,7 @@ function M.process(lines)
       local start, finish, kw = Highlight.match(text)
 
       if start then
-        if M.todo_exclude_this_dir(filr) then
+        if M.todo_exclude_this_dir(file) then
           goto continue
         end
         kw = Config.keywords[kw] or kw
